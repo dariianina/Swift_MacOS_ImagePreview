@@ -41,6 +41,7 @@ func collectImagesPreview() -> [NSImage] {
             }
         }
     }
+    print(imagesPreview.count)
     return imagesPreview
 }
 
@@ -80,8 +81,8 @@ struct ImagesTable: View{
         }
         @ViewBuilder func getRow(i: Int) -> some View{
             HStack{
-                if min(i+self.columns, self.images.count-1) >= i {
-                    ForEach(i...min(i+self.columns, self.images.count-1), id: \.self){
+                if min(i+self.columns-1, self.images.count-1) >= i {
+                    ForEach(i...min(i+self.columns-1, self.images.count-1), id: \.self){
                         j in Image(nsImage: self.images[j])
                     }
                 }
