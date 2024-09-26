@@ -1,5 +1,5 @@
-# ImagePreview
-Simplest swift macOS app for selecting and displaying images.
+# Display a grid of images on macOS
+Simplest swift macOS app for selecting files and displaying images in a grid.
 
 Uses: SwiftUI, QuickLook, QuickLookUI, AppKit. (NSOpenPanel, NSImage)
 
