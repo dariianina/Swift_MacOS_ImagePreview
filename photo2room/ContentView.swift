@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  photo2room
 //
-//  Created by user252334 on 9/16/24.
+//  Created by Daria Matiunina on 9/16/24.
 //
 
 import SwiftUI
@@ -26,9 +26,11 @@ func loadImage(with name: URL) -> NSImage {
     return NSImage(byReferencing: name)
 }
     
-
+/**
+Open a file browsing panel, get selected file URLs
+ and load images into an array of [NSImage]
+*/
 func collectImagesPreview() -> [NSImage] {
-    //var imagesPreview : [ImagesPreview] = []
     var imagesPreview : [NSImage] = []
     let openURL = openPanelURL()
     if openURL != nil {
@@ -41,14 +43,18 @@ func collectImagesPreview() -> [NSImage] {
             }
         }
     }
-    print(imagesPreview.count)
     return imagesPreview
 }
 
-
+/**
+Tabular image preview
+*/
 struct ImagesTable: View{
     var imagesPreview : [NSImage] = []
-    var H = 1; var W = 1
+    // number of rows
+    var H = 1
+    // number of columns
+    var W = 1
     
     init(imagesPreview: [NSImage], H: Int, W: Int){
         self.imagesPreview = imagesPreview
@@ -58,14 +64,12 @@ struct ImagesTable: View{
     
     var body: some View{
         if self.imagesPreview.count != 0 {
-            
+            // stack rows of image views
             VStack{
                 ForEach(0...self.H-1, id: \.self){i in
                     ImageRow(columns: self.W, images: self.imagesPreview).getRow(i: i*self.W)
-                }
-                
-            }
-            
+                }               
+            }         
         }
     }
     
